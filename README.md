@@ -1,12 +1,20 @@
-# VisionWork AI v1.1
+# VisionWork AI
 
-Features:
-- Webcam
-- YOLOv8 Person Detection
-- GPU support
-- Custom drawing module
-- FPS counter
-- Logging scaffold
+AI-Powered Employee Monitoring & Workplace Analytics System
 
-Run:
-    python run.py
+## Current Version
+
+✅ v1.1
+
+### Features
+- Real-time webcam detection
+- YOLO person detection
+- GPU acceleration
+- FPS display
+- Modular architecture
+
+## Tech Stack
+- Python
+- OpenCV
+- Ultralytics YOLO
+- PyTorch
