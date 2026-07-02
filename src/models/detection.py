@@ -9,43 +9,64 @@ from dataclasses import dataclass
 from typing import Tuple
 
 
-@dataclass
+@dataclass(slots=True)
 class Detection:
-    """
-    Represents one detected object.
-    """
 
     class_id: int
     class_name: str
     confidence: float
     bbox: Tuple[int, int, int, int]
 
-    def width(self) -> int:
-        return self.bbox[2] - self.bbox[0]
+    @property
+    def x1(self):
+        return self.bbox[0]
 
-    def height(self) -> int:
-        return self.bbox[3] - self.bbox[1]
+    @property
+    def y1(self):
+        return self.bbox[1]
 
+    @property
+    def x2(self):
+        return self.bbox[2]
+
+    @property
+    def y2(self):
+        return self.bbox[3]
+
+    @property
+    def width(self):
+        return self.x2 - self.x1
+
+    @property
+    def height(self):
+        return self.y2 - self.y1
+
+    @property
     def center(self):
+
         return (
-            (self.bbox[0] + self.bbox[2]) // 2,
-            (self.bbox[1] + self.bbox[3]) // 2,
+
+            (self.x1 + self.x2) // 2,
+
+            (self.y1 + self.y2) // 2,
+
         )
 
-    def area(self) -> int:
-        return self.width() * self.height()
+    @property
+    def area(self):
+
+        return self.width * self.height
 
     def to_dict(self):
-        return {
-            "class_id": self.class_id,
-            "class_name": self.class_name,
-            "confidence": round(self.confidence, 3),
-            "bbox": self.bbox,
-        }
 
-    def __str__(self):
-        return (
-            f"{self.class_name} | "
-            f"{self.confidence:.2f} | "
-            f"{self.bbox}"
-        )
+        return {
+
+            "class_id": self.class_id,
+
+            "class_name": self.class_name,
+
+            "confidence": self.confidence,
+
+            "bbox": self.bbox,
+
+        }
