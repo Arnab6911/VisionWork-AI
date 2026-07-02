@@ -31,7 +31,7 @@ OFFICE_CLASSES = {
 
 COLORS = {
 
-    "person": (0,255,0),
+    "person": (60,180,75),
 
     "cell phone": (0,0,255),
 
@@ -51,6 +51,6 @@ COLORS = {
 
     "backpack": (200,100,255),
 
-    "default": (255,255,255)
+    "default": (0,200,255)
 
 }
